@@ -456,8 +456,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  const matrix = Array.from({ length: n }, () => Array.from({ length: n }, () => 1));
+  return matrix.map((item, index) => item.map((it, ind) => {
+    if (ind !== index) {
+      return item[ind] - 1;
+    } return item[ind];
+  }));
 }
 
 /**
@@ -569,10 +574,9 @@ function selectMany(arr, childrenSelector) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  return indexes.reduce((acc, item) => acc[item], arr);
 }
-
 
 /**
  * Swaps the head and tail of the specified array:

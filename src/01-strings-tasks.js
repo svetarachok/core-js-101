@@ -228,12 +228,13 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const vocab = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  // // const rot13 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  // const res = str.replace(/[a-z, A-Z]g/, (letter) => vocab.charAt(vocab.indexOf(letter) - 13));
-  // return res;
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const vocab = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const rot13 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  function replacer(match) {
+    return rot13.charAt(vocab.indexOf(match));
+  }
+  return str.replace(/[a-z]/gi, replacer);
 }
 
 /**
