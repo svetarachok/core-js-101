@@ -53,8 +53,10 @@ function getJSON(obj) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  const object = JSON.parse(json);
+  const res = Object.setPrototypeOf(object, proto);
+  return res;
 }
 
 
@@ -111,8 +113,50 @@ function fromJSON(/* proto, json */) {
  *
  *  For more examples see unit tests.
  */
+// class ElementBulder {
+//   constructor(element) {
+//     this.element = String(element);
+//   }
+
+//   id(value) {
+//     this.element += `#${value}`;
+//     return this;
+//   }
+
+//   class(value) {
+//     this.element += `.${value}`;
+//     return this;
+//   }
+
+//   attr(value) {
+//     this.element += `[${value}]`;
+//     return this;
+//   }
+
+//   pseudoClass(value) {
+//     this.element += `:${value}`;
+//     return this;
+//   }
+
+//   pseudoElement(value) {
+//     this.element += `::${value}`;
+//     return this;
+//   }
+
+//   stringify() {
+//     console.log(this.element);
+//     return this.element;
+//   }
+// }
 
 const cssSelectorBuilder = {
+//   element(value) {
+//     return new ElementBulder(value);
+//   },
+
+  //   combine(selector1, combinator, selector2) {
+  //     return `${selector1}${combinator}${selector2}`;
+  //   },
   element(/* value */) {
     throw new Error('Not implemented');
   },

@@ -428,6 +428,40 @@ function toNaryString(num, n) {
  */
 function getCommonDirectoryPath(/* pathes */) {
   throw new Error('Not implemented');
+  // if (pathes.length === 0) {
+  //   return '';
+  // }
+  // if (pathes.length === 1) {
+  //   return pathes[0];
+  // }
+  // let commonFirsLines = [];
+  // if (pathes.length > 2) {
+  //   const arr1 = pathes[0].split('/');
+  //   const arr2 = pathes[1].split('/');
+  //   arr1.forEach((item) => arr2.forEach((item2) => {
+  //     if (item === item2) {
+  //       commonFirsLines.push(item);
+  //     }
+  //   }));
+
+  //   for (let i = 2; i < pathes.length; i += 1) {
+  //     const nextArr = pathes[i].split('/');
+  //     commonFirsLines.forEach((line) => nextArr.forEach((item2) => {
+  //       console.log(`line: ${line}`);
+  //       console.log(`item2: ${item2}`);
+  //       if (line !== item2) {
+  //         commonFirsLines = commonFirsLines.filter((item) => item !== line);
+  //       }
+  //       return commonFirsLines;
+  //     }));
+  //   }
+  // }
+  // console.log(commonFirsLines);
+  // if (commonFirsLines === ' ') {
+  //   return '/';
+  // } if (commonFirsLines.length === 0) {
+  //   return '';
+  // } return `${commonFirsLines.join('/')}/`;
 }
 
 
@@ -449,8 +483,19 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const res = [];
+  for (let i = 0; i < m1.length; i += 1) {
+    res[i] = [];
+    for (let j = 0; j < m2[0].length; j += 1) {
+      let sum = 0;
+      for (let k = 0; k < m1[0].length; k += 1) {
+        sum += m1[i][k] * m2[k][j];
+      }
+      res[i][j] = sum;
+    }
+  }
+  return res;
 }
 
 
@@ -484,8 +529,33 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  let res = '';
+  if ((position[0][0] === 'X' && position[0][1] === 'X' && position[0][2] === 'X') || (position[1][0] === 'X' && position[1][1] === 'X' && position[1][2] === 'X') || (position[2][0] === 'X' && position[2][1] === 'X' && position[2][2] === 'X')) {
+    res = 'X';
+    return res;
+  }
+  if ((position[0][0] === '0' && position[0][1] === '0' && position[0][2] === '0') || (position[1][0] === '0' && position[1][1] === '0' && position[1][2] === '0') || (position[2][0] === '0' && position[2][1] === '0' && position[2][2] === '0')) {
+    res = '0';
+    return res;
+  }
+  if ((position[0][0] === 'X' && position[1][0] === 'X' && position[2][0] === 'X') || (position[0][1] === 'X' && position[1][1] === 'X' && position[2][1] === 'X') || (position[0][2] === 'X' && position[1][2] === 'X' && position[2][2] === 'X')) {
+    res = 'X';
+    return res;
+  }
+  if ((position[0][0] === '0' && position[1][0] === '0' && position[2][0] === '0') || (position[0][1] === '0' && position[1][1] === '0' && position[2][1] === '0') || (position[0][2] === '0' && position[1][2] === '0' && position[2][2] === '0')) {
+    res = '0';
+    return res;
+  }
+  if ((position[0][0] === '0' && position[1][1] === '0' && position[2][2] === '0') || (position[2][0] === '0' && position[1][1] === '0' && position[0][2] === '0')) {
+    res = '0';
+    return res;
+  }
+  if ((position[0][0] === 'X' && position[1][1] === 'X' && position[2][2] === 'X') || (position[2][0] === 'X' && position[1][1] === 'X' && position[0][2] === 'X')) {
+    res = 'X';
+    return res;
+  }
+  return undefined;
 }
 
 
